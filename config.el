@@ -47,3 +47,15 @@
   )
 
 (add-hook 'go-mode-hook 'my-go-mode-hook)
+
+(require 'ox-latex)
+(add-to-list 'org-latex-classes
+         '("manual"
+           "\\documentclass[10pt]{memoir}"
+           ("\\chapter{%s}" . "\\chapter*{%s}")
+           ("\\section{%s}" . "\\section*{%s}")
+           ("\\subsection{%s}" . "\\subsection*{%s}")
+           ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+           ("\\paragraph{%s}" . "\\paragraph*{%s}")
+           ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
+         )
