@@ -48,6 +48,11 @@
 
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
+;; Org
+;; ----------------------------------------------------------------------------
+
+;; add support for a latex export class called manual that uses the memory LaTeX
+;; style file
 (require 'ox-latex)
 (add-to-list 'org-latex-classes
          '("manual"
