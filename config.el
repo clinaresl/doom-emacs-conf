@@ -28,6 +28,10 @@
  'python-mode-hook
  (setq parens-require-spaces nil))
 
+;; suddenly, flycheck.el changes the checkers chain and placed flake8 before
+;; pylint, which is rather annoying so I just removed it!
+(setq-default flycheck-disabled-checkers '(python-flake8))
+
 ;; Go
 ;; ----------------------------------------------------------------------------
 (defun my-go-mode-hook ()
