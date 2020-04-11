@@ -54,6 +54,22 @@
 
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
+;; Lua
+;; ----------------------------------------------------------------------------
+
+;; add support for editing Lua files
+(add-to-list 'load-path "~/.emacs.d/.local/elpa/lua-mode-20200405.1305")
+
+(autoload 'lua-mode "lua-mode" "Lua editing mode." t)
+(add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
+(add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
+
+;; and enable flymake for lua
+(add-to-list 'load-path "~/.emacs.d/.local/elpa/flymake-lua-20170129.154")
+(eval-after-load 'lua-mode '(add-hook 'lua-mode-hook 'flymake-lua-setup))
+(autoload #'flymake-lua-setup "flymake-lua" nil t)
+
+
 ;; Org
 ;; ----------------------------------------------------------------------------
 
