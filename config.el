@@ -86,3 +86,11 @@
            ("\\paragraph{%s}" . "\\paragraph*{%s}")
            ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
          )
+
+;; configuring the default applications to use when opening files. In
+;; particular, this setting allow okular to be used when opening pdf files
+(setq org-file-apps '((auto-mode . emacs)
+                      (directory . emacs)
+                      ("\\.mm\\'" . default)
+                      ("\\.x?html?\\'" . default)
+                      ("\\.pdf\\'" . "okular \"%s\"")))
