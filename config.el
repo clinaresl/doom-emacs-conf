@@ -75,17 +75,17 @@
 
 ;; add support for a latex export class called manual that uses the memory LaTeX
 ;; style file
-(require 'ox-latex)
-(add-to-list 'org-latex-classes
-         '("manual"
-           "\\documentclass[10pt]{memoir}"
-           ("\\chapter{%s}" . "\\chapter*{%s}")
-           ("\\section{%s}" . "\\section*{%s}")
-           ("\\subsection{%s}" . "\\subsection*{%s}")
-           ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-           ("\\paragraph{%s}" . "\\paragraph*{%s}")
-           ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
-         )
+;; (require 'ox-latex)
+;; (add-to-list 'org-latex-classes
+;;          '("manual"
+;;            "\\documentclass[10pt]{memoir}"
+;;            ("\\chapter{%s}" . "\\chapter*{%s}")
+;;            ("\\section{%s}" . "\\section*{%s}")
+;;            ("\\subsection{%s}" . "\\subsection*{%s}")
+;;            ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+;;            ("\\paragraph{%s}" . "\\paragraph*{%s}")
+;;            ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
+;;          )
 
 ;; configuring the default applications to use when opening files. In
 ;; particular, this setting allow okular to be used when opening pdf files
