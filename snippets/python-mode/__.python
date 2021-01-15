@@ -1,0 +1,24 @@
+# -*- mode: snippet -*-
+# --
+#!/usr/bin/env `(file-name-nondirectory python-shell-interpreter)`
+# -*- coding: utf-8 -*-
+#
+# `(file-name-nondirectory buffer-file-name)`
+# Description:
+# -----------------------------------------------------------------------------
+#
+# Started on <`(format-time-string "%a %d-%m-%Y %T.%N (%s)")`>
+# Carlos Linares López <carlos.linares@uc3m.es>
+#
+
+"""
+$0
+"""
+
+# imports
+# -----------------------------------------------------------------------------
+
+# Local Variables:
+# mode:python
+# fill-column:80
+# End:

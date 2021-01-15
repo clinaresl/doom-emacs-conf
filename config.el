@@ -3,6 +3,7 @@
 ;; Place your private configuration here
 
 ;; tell projectile where are located the different projects
+
 (setq
  projectile-project-search-path '("~/lab/" "~/uc3m/" "~/org/" "~/latex/"
                                   "~/latex/papers/"
