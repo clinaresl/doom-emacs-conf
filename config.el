@@ -7,7 +7,7 @@
 (setq
  projectile-project-search-path '("~/lab/" "~/uc3m/" "~/org/" "~/latex/"
                                   "~/latex/papers/"
-                                  "~/lab/go/src/github.com/clinaresl"))
+                                  "~/lab/go/src/github.com/clinaresl/"))
 
 ;; enable avy to search in all windows
 (setq avy-all-windows t)
