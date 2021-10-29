@@ -25,13 +25,18 @@
 ;; Python
 ;; ----------------------------------------------------------------------------
 ;; make sure no white spaces are inserted before parenthesis in python-mode
+(require 'package)
+(add-to-list 'package-archives
+             '("MELPA Stable" . "https://stable.melpa.org/packages/") t)
+(package-initialize)
+
 (add-hook
  'python-mode-hook
  (lambda () (setq parens-require-spaces nil)))
 
 ;; suddenly, flycheck.el changes the checkers chain and placed flake8 before
 ;; pylint, which is rather annoying so I just removed it!
-(setq-default flycheck-disabled-checkers '(python-flake8))
+;(setq-default flycheck-disabled-checkers '(python-flake8))
 
 ;; also register the local templates for python
 (set-file-template! "\\.\\(?:py\\|python\\)$" :trigger "__.python" :mode 'python-mode)
@@ -57,6 +62,15 @@
   )
 
 (add-hook 'go-mode-hook 'my-go-mode-hook)
+
+;; c++
+;; ----------------------------------------------------------------------------
+
+;; A continuación se definen varios file templates para ficheros acabados en .h,
+;; .hh, .hpp, .cc, .cpp y, por supuesto, para main.cc o main.cpp
+(set-file-template! "\\.h\\(?:\\|h\\|pp\\)$" :trigger "__.hh" :mode 'cpp-mode)
+(set-file-template! "\\.c\\(?:c\\|pp\\)$" :trigger "__.cc" :mode 'cpp-mode)
+(set-file-template! "/main\\.c\\(?:c\\|pp\\)$" :trigger "__main.cc" :mode 'cpp-mode)
 
 ;; Org
 ;; ----------------------------------------------------------------------------
