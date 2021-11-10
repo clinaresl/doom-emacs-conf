@@ -20,7 +20,7 @@
 (load! "bindings")
 
 ;; manual selection of themes
-(load-theme 'doom-spacegrey t)
+(load-theme 'doom-nord t)
 
 ;; Python
 ;; ----------------------------------------------------------------------------
@@ -71,6 +71,13 @@
 (set-file-template! "\\.h\\(?:\\|h\\|pp\\)$" :trigger "__.hh" :mode 'cpp-mode)
 (set-file-template! "\\.c\\(?:c\\|pp\\)$" :trigger "__.cc" :mode 'cpp-mode)
 (set-file-template! "/main\\.c\\(?:c\\|pp\\)$" :trigger "__main.cc" :mode 'cpp-mode)
+
+;; LaTeX
+;; ----------------------------------------------------------------------------
+
+;; Definición de snippets para la edición de ficheros .tex/.latex
+(set-file-template! "\\.tex$" :trigger "__.tex" :mode 'latex-mode)
+(set-file-template! "\\.latex$" :trigger "__.latex" :mode 'latex-mode)
 
 ;; Org
 ;; ----------------------------------------------------------------------------
