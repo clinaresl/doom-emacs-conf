@@ -20,7 +20,7 @@
 (load! "bindings")
 
 ;; manual selection of themes
-(load-theme 'doom-nord t)
+(load-theme 'doom-zenburn t)
 
 ;; Python
 ;; ----------------------------------------------------------------------------
@@ -82,19 +82,48 @@
 ;; Org
 ;; ----------------------------------------------------------------------------
 
-;; add support for a latex export class called manual that uses the memory LaTeX
-;; style file
-;; (require 'ox-latex)
-;; (add-to-list 'org-latex-classes
-;;          '("manual"
-;;            "\\documentclass[10pt]{memoir}"
-;;            ("\\chapter{%s}" . "\\chapter*{%s}")
-;;            ("\\section{%s}" . "\\section*{%s}")
-;;            ("\\subsection{%s}" . "\\subsection*{%s}")
-;;            ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-;;            ("\\paragraph{%s}" . "\\paragraph*{%s}")
-;;            ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
-;;          )
+;; Customization of the major mode org
+(setq org-ellipsis " ▽"
+      org-hide-emphasis-markers t)
+
+;; ensure that org-bullets-mode is always enabled by default under org-mode
+(use-package org-bullets
+  :hook ((org-mode) . org-bullets-mode))
+
+;; also, enable variable-pitch-mode en org-mode. Because variable font width is
+;; used, it is also customary to modify the appearance because fill-paragraph
+;; works on the number of characters
+(add-hook 'org-mode-hook 'variable-pitch-mode)
+(add-hook 'org-mode-hook 'visual-line-mode)
+
+;; however, fixed-pitch-mode should be preferred for some constructs in ore-mode
+(with-eval-after-load 'org-faces
+  (progn
+    (set-face-attribute 'org-block nil    :foreground nil :inherit 'fixed-pitch)
+    (set-face-attribute 'org-table nil    :inherit 'fixed-pitch)
+    (set-face-attribute 'org-formula nil  :inherit 'fixed-pitch)
+    (set-face-attribute 'org-code nil     :inherit '(shadow fixed-pitch))
+    (set-face-attribute 'org-table nil    :inherit '(shadow fixed-pitch))
+    (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
+    (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
+    (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
+    (set-face-attribute 'org-checkbox nil  :inherit 'fixed-pitch)
+    (set-face-attribute 'line-number nil :inherit 'fixed-pitch)
+    (set-face-attribute 'line-number-current-line nil :inherit 'fixed-pitch)))
+
+;; Change the font size used in the headings
+(with-eval-after-load 'org-faces (dolist (face '((org-level-1 . 1.44)
+                                                 (org-level-2 . 1.32)
+                                                 (org-level-3 . 1.2)
+                                                 (org-level-4 . 1.2)
+                                                 (org-level-5 . 1.2)
+                                                 (org-level-6 . 1.2)
+                                                 (org-level-7 . 1.2)
+                                                 (org-level-8 . 1.2)))
+                                   (set-face-attribute (car face) nil
+                                                       :font "Cantarell"
+                                                       :weight 'regular
+                                                       :height (cdr face))))
 
 ;; configuring the default applications to use when opening files. In
 ;; particular, this setting allow okular to be used when opening pdf files
@@ -103,3 +132,17 @@
                       ("\\.mm\\'" . default)
                       ("\\.x?html?\\'" . default)
                       ("\\.pdf\\'" . "okular \"%s\"")))
+
+;; Github Copilot
+;; ----------------------------------------------------------------------------
+
+;; accept completion from copilot and fallback to company
+(use-package! copilot
+  :hook (prog-mode . copilot-mode)
+  :bind (("C-TAB" . 'copilot-accept-completion-by-word)
+         ("C-<tab>" . 'copilot-accept-completion-by-word)
+         :map copilot-completion-map
+         ("<tab>" . 'copilot-accept-completion)
+         ("TAB" . 'copilot-accept-completion)))
+
+(setq copilot-enable-predicates nil)
